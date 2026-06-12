@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AP1 Flashcard, Quiz & AI Tutor - Pathos 1 & Atlante dello Stredgone</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
@@ -44,7 +42,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col">
 
-    <!-- HEADER -->
     <header class="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-30 px-4 py-3">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
@@ -60,7 +57,6 @@
                 </div>
             </div>
             
-            <!-- MODALITÀ DI NAVIGAZIONE PRINCIPALE -->
             <div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl border border-slate-200 dark:border-slate-700 w-full md:w-auto">
                 <button onclick="switchMode('flashcard')" id="tab-flashcard" class="flex-1 md:flex-initial px-4 py-2 rounded-lg text-xs font-bold flex items-center justify-center gap-2 transition-all">
                     <i data-lucide="layers" class="w-4 h-4"></i> Flashcards 📇
@@ -74,7 +70,6 @@
             </div>
 
             <div class="flex items-center gap-4 justify-end w-full md:w-auto">
-                <!-- Progress Indicator -->
                 <div class="hidden lg:flex flex-col items-end gap-1">
                     <span class="text-[10px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Studio</span>
                     <div class="flex items-center gap-2">
@@ -92,12 +87,9 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- SIDEBAR: CONTROLLI E FILTRI -->
         <aside class="lg:col-span-3 space-y-4">
-            <!-- Statistiche Flashcard -->
             <div id="sidebar-stats-flashcard" class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200">
                 <h2 class="font-bold text-sm tracking-wide uppercase text-slate-400 mb-3 flex items-center gap-2">
                     <i data-lucide="activity" class="w-4 h-4 text-rose-500"></i> Memorizzazione
@@ -121,7 +113,6 @@
                 </button>
             </div>
 
-            <!-- Statistiche Quiz -->
             <div id="sidebar-stats-quiz" class="hidden bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200">
                 <h2 class="font-bold text-sm tracking-wide uppercase text-slate-400 mb-3 flex items-center gap-2">
                     <i data-lucide="award" class="w-4 h-4 text-rose-500"></i> Risultati Quiz
@@ -148,7 +139,6 @@
                 </div>
             </div>
 
-            <!-- Statistiche Simulatore Orale -->
             <div id="sidebar-stats-oral" class="hidden bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-200">
                 <h2 class="font-bold text-sm tracking-wide uppercase text-slate-400 mb-3 flex items-center gap-2">
                     <i data-lucide="mic" class="w-4 h-4 text-rose-500"></i> Sicurezza Orale
@@ -168,17 +158,14 @@
                 </div>
             </div>
 
-            <!-- Categorie & Priorità -->
             <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                 <h2 class="font-bold text-sm tracking-wide uppercase text-slate-400 mb-3 flex items-center gap-2">
                     <i data-lucide="filter" class="w-4 h-4 text-rose-500"></i> Seleziona Macroargomento
                 </h2>
                 <div class="space-y-1" id="category-list">
-                    <!-- Dinamicamente popolato dal JS -->
-                </div>
+                    </div>
             </div>
 
-            <!-- Legenda dello Stredgone -->
             <div class="bg-gradient-to-br from-indigo-900 via-purple-900 to-rose-950 text-white p-4 rounded-xl shadow-lg relative overflow-hidden border border-purple-500/30">
                 <div class="absolute -right-8 -bottom-8 opacity-10">
                     <i data-lucide="eye" class="w-32 h-32"></i>
@@ -195,12 +182,9 @@
             </div>
         </aside>
 
-        <!-- AREA DI STUDIO PRINCIPALE -->
         <section class="lg:col-span-9 space-y-6">
             
-            <!-- BLOCCO 1: SCHERMATA FLASHCARD -->
             <div id="view-flashcard" class="space-y-6">
-                <!-- Barra Superiore Selezione Veloce e Opzioni -->
                 <div class="flex flex-col sm:flex-row items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm gap-2">
                     <div class="flex flex-wrap items-center gap-2">
                         <span id="current-badge" class="text-xs font-bold px-2.5 py-1 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">Caricamento...</span>
@@ -214,9 +198,7 @@
                     </div>
                 </div>
 
-                <!-- CONTENITORE FLASHCARD FLIP -->
                 <div class="relative w-full min-h-[520px] md:min-h-[460px] perspective-1000">
-                    <!-- FRONTE (DOMANDA) -->
                     <div id="card-front" class="absolute w-full h-full backface-hidden bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 rounded-2xl shadow-md p-6 flex flex-col justify-between hover:border-rose-400 dark:hover:border-rose-600 cursor-pointer z-10 opacity-100" style="transition: transform 0.6s, opacity 0.6s; transform: rotateY(0deg); -webkit-transform: rotateY(0deg);" onclick="flipCard()">
                         <div class="flex items-center justify-between text-xs text-slate-400">
                             <span class="flex items-center gap-1 uppercase tracking-wider font-semibold">
@@ -242,7 +224,6 @@
                         </div>
                     </div>
 
-                    <!-- RETRO (RISPOSTA) -->
                     <div id="card-back" class="absolute w-full h-full backface-hidden bg-white dark:bg-slate-900 border-2 border-rose-500 dark:border-rose-600 rounded-2xl shadow-xl p-6 flex flex-col justify-between overflow-hidden z-0 opacity-0 pointer-events-none" style="transition: transform 0.6s, opacity 0.6s; transform: rotateY(-180deg); -webkit-transform: rotateY(-180deg);" onclick="flipCard()">
                         <div class="flex items-center justify-between text-xs text-slate-400 pb-2 border-b border-slate-100 dark:border-slate-800" onclick="event.stopPropagation()">
                             <span class="flex items-center gap-1 uppercase tracking-wider font-bold text-rose-500">
@@ -275,7 +256,6 @@
                     </div>
                 </div>
 
-                <!-- CONTROLLI DI NAVIGAZIONE -->
                 <div class="flex items-center justify-between">
                     <button onclick="prevCard()" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl font-semibold transition flex items-center gap-2">
                         <i data-lucide="chevron-left" class="w-4 h-4"></i> Precedente
@@ -288,7 +268,6 @@
                     </button>
                 </div>
 
-                <!-- ✨ CO-PILOTA AI DELLO STREDGONE (Gemini API Integration) -->
                 <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md p-6 space-y-4">
                     <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
                         <div class="flex items-center gap-2">
@@ -325,7 +304,6 @@
                         </button>
                     </div>
                     
-                    <!-- Area di visualizzazione dell'output dell'AI -->
                     <div id="ai-response-box" class="hidden p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 max-h-[350px] overflow-y-auto text-xs leading-relaxed space-y-2 shadow-inner">
                         <div class="flex items-center justify-between border-b border-slate-200/60 dark:border-slate-800 pb-2 mb-2">
                             <span id="ai-response-type" class="font-extrabold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider text-[10px]">Risposta del Co-pilota AI</span>
@@ -336,9 +314,7 @@
                 </div>
             </div>
 
-            <!-- BLOCCO 2: SCHERMATA QUIZ D'ESAME -->
             <div id="view-quiz" class="hidden space-y-6">
-                <!-- Info Domanda Quiz -->
                 <div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <div class="flex items-center gap-2">
                         <span id="quiz-cat-badge" class="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">Sezione</span>
@@ -349,29 +325,23 @@
                     </div>
                 </div>
 
-                <!-- SCHEDA QUIZ INTERATTIVA -->
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md p-6 space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                        <!-- Colonna Domanda & Risposte -->
                         <div id="quiz-main-col" class="md:col-span-12 space-y-4">
                             <h3 id="quiz-question-text" class="text-lg md:text-xl font-extrabold text-slate-800 dark:text-slate-100 leading-snug">
                                 Testo della domanda...
                             </h3>
                             
-                            <!-- Opzioni di Risposta -->
                             <div id="quiz-options-container" class="grid grid-cols-1 gap-3">
-                                <!-- Bottoni opzioni iniettati da JS -->
-                            </div>
+                                </div>
                         </div>
 
-                        <!-- Colonna Atlante Stredgone nel Quiz -->
                         <div id="quiz-visual-col" class="hidden md:col-span-5 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 rounded-xl p-3 shadow-inner relative overflow-hidden">
                             <div id="quiz-svg-container" class="w-full h-full flex flex-col justify-center items-center"></div>
                             <div class="absolute bottom-1 right-2 text-[9px] font-bold tracking-widest text-rose-500 uppercase opacity-65 pointer-events-none">Atlante Stredgone</div>
                         </div>
                     </div>
 
-                    <!-- BOX RAZIONALE / FEEDBACK (Nascosto finché non si risponde) -->
                     <div id="quiz-feedback-box" class="hidden p-4 rounded-xl border transition-all duration-300">
                         <div class="flex items-start gap-3">
                             <div id="quiz-feedback-icon" class="p-1 rounded-full text-white mt-0.5"></div>
@@ -382,7 +352,6 @@
                         </div>
                     </div>
 
-                    <!-- BOTTONI DI PROCEDIMENTO -->
                     <div class="flex justify-end pt-2">
                         <button onclick="nextQuizQuestion()" id="quiz-next-btn" class="hidden px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold transition flex items-center gap-2 shadow-md">
                             Continua <i data-lucide="arrow-right" class="w-4 h-4"></i>
@@ -391,9 +360,7 @@
                 </div>
             </div>
 
-            <!-- BLOCCO 3: SCHERMATA SIMULATORE ORALE -->
             <div id="view-oral" class="hidden space-y-6">
-                <!-- Info Domanda Orale -->
                 <div class="flex items-center justify-between bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <div class="flex items-center gap-2">
                         <span id="oral-category-badge" class="text-xs font-bold px-2.5 py-1 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-300">Simulatore Orale Clinico</span>
@@ -403,7 +370,6 @@
                     </div>
                 </div>
 
-                <!-- SCHEDA INTERROGAZIONE INTERATTIVA -->
                 <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md p-6 space-y-6">
                     <div class="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/40 rounded-xl border border-slate-100 dark:border-slate-800">
                         <div class="w-12 h-12 bg-violet-500 text-white rounded-full flex items-center justify-center font-bold text-lg shadow-inner">
@@ -424,18 +390,15 @@
                         </p>
                     </div>
 
-                    <!-- TRACCIA DI RISPOSTA ORALE (Nascosta inizialmente) -->
                     <div id="oral-answer-box" class="hidden space-y-6 border-t border-slate-200/60 dark:border-slate-800 pt-6">
                         <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                            <!-- Colonna Testo e Punti d'onore -->
                             <div class="md:col-span-7 space-y-4 text-xs">
                                 <div class="p-3.5 bg-emerald-50/50 dark:bg-emerald-950/10 rounded-xl border border-emerald-100 dark:border-emerald-900/40">
                                     <h4 class="font-extrabold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider text-[10px] mb-2 flex items-center gap-1.5">
                                         <i data-lucide="shield-alert" class="w-3.5 h-3.5"></i> Punti d'onore d'Esame (Da dire assolutamente!)
                                     </h4>
                                     <ul id="oral-honor-list" class="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300 leading-relaxed">
-                                        <!-- Popolato da JS -->
-                                    </ul>
+                                        </ul>
                                 </div>
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div class="p-3 bg-slate-50 dark:bg-slate-800/30 rounded-lg border border-slate-200/40 dark:border-slate-700/40">
@@ -449,14 +412,12 @@
                                 </div>
                             </div>
                             
-                            <!-- Colonna Vetrino Stredgone Associato -->
                             <div class="md:col-span-5 flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-950 border border-slate-200/60 dark:border-slate-800 rounded-xl p-3 shadow-inner relative overflow-hidden min-h-[220px]">
                                 <div id="oral-svg-container" class="w-full h-full flex flex-col justify-center items-center"></div>
                                 <div class="absolute bottom-1 right-2 text-[9px] font-bold tracking-widest text-rose-500 uppercase opacity-65 pointer-events-none">Disegno d'Esame</div>
                             </div>
                         </div>
 
-                        <!-- VALUTAZIONE STUDENTE -->
                         <div class="p-4 bg-violet-50/50 dark:bg-violet-950/10 border border-violet-100 dark:border-violet-900/40 rounded-xl text-center space-y-3">
                             <span class="block font-bold text-[10px] uppercase tracking-wider text-violet-700 dark:text-violet-400">Com'è andata la tua esposizione orale?</span>
                             <div class="flex justify-center gap-2">
@@ -467,7 +428,6 @@
                         </div>
                     </div>
 
-                    <!-- BOTTONI PROCEDIMENTO ORALE -->
                     <div class="flex justify-between items-center pt-2">
                         <button onclick="prevOralQuestion()" class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl font-semibold text-xs transition flex items-center gap-1.5">
                             <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> Precedente
@@ -482,7 +442,6 @@
                 </div>
             </div>
 
-            <!-- SCHERMATA RIEPILOGO QUIZ -->
             <div id="view-quiz-summary" class="hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-md p-8 text-center space-y-6">
                 <div class="max-w-md mx-auto space-y-4">
                     <div class="w-24 h-24 bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 rounded-full flex items-center justify-center mx-auto shadow-md">
@@ -510,7 +469,6 @@
                 </div>
             </div>
 
-            <!-- TABELLA DI CONFRONTO RAPIDO / TIPS D'ESAME -->
             <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
                 <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-900/50">
                     <h3 class="font-bold text-sm uppercase tracking-wider flex items-center gap-2">
@@ -550,7 +508,6 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-4 text-center text-xs text-slate-500 dark:text-slate-400 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <div>
@@ -563,7 +520,6 @@
         </div>
     </footer>
 
-    <!-- LOGICA JAVASCRIPT -->
     <script>
         // TABELLA DI CONTENUTO DELLE FLASHCARDS (Allineate rigorosamente alle fonti del notebook)
         const flashcardsData = [
@@ -589,7 +545,7 @@
                         </div>
                         <div class="text-xs space-y-1 pt-1 border-t border-slate-100 dark:border-slate-800">
                             <span class="font-bold text-indigo-500 dark:text-indigo-400">MORFOLOGIA MICROSCOPICA (Atlante p. 64):</span>
-                            <p>Nelle fasi iniziali di crescita radiale (intraepidermica), si osserva la <strong>diffusione pagetoide (pagetoid spread)</strong>: i melanociti atipici abbandonano lo strato basale e risalgono singolarmente o a piccoli nidi negli strati superiori (spinoso e granuloso). Le cellule appaiono ingrandite, con nuclei ipercromici polimorfi e nucleoli prominenti "a occhio di bue".</p>
+                            <p>Nelle fases iniziali di crescita radiale (intraepidermica), si osserva la <strong>diffusione pagetoide (pagetoid spread)</strong>: i melanociti atipici abbandonano lo strato basale e risalgono singolarmente o a piccoli nidi negli strati superiori (spinoso e granuloso). Le cellule appaiono ingrandite, con nuclei ipercromici polimorfi e nucleoli prominenti "a occhio di bue".</p>
                         </div>
                     </div>
                 `
@@ -624,7 +580,7 @@
                 id: 3,
                 category: "Cute & Melanoma",
                 priority: "Priorità: Massima (Chiesto sempre)",
-                profTag: "Prof. Mascolo / Pisapia",
+                profTag: "Prof. Pisapia / Mascolo",
                 front: "Biopsia del Linfonodo Sentinella nel Melanoma",
                 frontSub: "Delinea le indicazioni per la biopsia e la prima localizzazione microscopica.",
                 hasVisual: true,
@@ -1169,7 +1125,7 @@
                         </p>
                         <div class="text-xs space-y-1">
                             <span class="font-bold text-indigo-500 dark:text-indigo-400">MORFOLOGIA MACROSCOPICA:</span>
-                            <p>Massa infiltrante, non capsulata, di consistenza solida o parzialmente cistica, contenente muco vischioso.</p>
+                            <p>Massa infiltrante, non capsulata, di consistenza solida o partyialmente cistica, contenente muco vischioso.</p>
                         </div>
                         <div class="text-xs space-y-1 pt-1 border-t border-slate-100 dark:border-slate-800">
                             <span class="font-bold text-indigo-500 dark:text-indigo-400">MORFOLOGIA MICROSCOPICA & GENETICA:</span>
@@ -1190,7 +1146,7 @@
                 priority: "Priorità: Massima",
                 profTag: "Prof. Pisapia / Staibano",
                 front: "Carcinoma Adenoideo Cistico: Pattern Cribriforme e Neurotropismo",
-                frontSub: "Disegna il pattern a 'groviera' e l'invasione dello spazio perineurale.",
+                frontSub: "Disegna le pattern a 'groviera' e l'invasione dello spazio perineurale.",
                 hasVisual: true,
                 visualType: "salivari-maligni",
                 back: `
@@ -1206,7 +1162,7 @@
                         <div class="text-xs space-y-1 pt-1 border-t border-slate-100 dark:border-slate-800">
                             <span class="font-bold text-indigo-500 dark:text-indigo-400">MORFOLOGIA MICROSCOPICA:</span>
                             <ul class="list-disc pl-5 space-y-1">
-                                <li><strong>Pattern Cribriforme (Swiss Cheese):</strong> Cellule tumorali basaloidi piccole e uniformi disposte in nidi solidi che circondano spazi pseudocistici contenenti cilindri di matrice basale eosinofila o mucoide.</li>
+                                <li><strong>Pattern Cribriforme (Swiss Cheese):</strong> Cellule tumorali basaloidi piccole e uniformi disposte in nidi soliti che circondano spazi pseudocistici contenenti cilindri di matrice basale eosinofila o mucoide.</li>
                                 <li><strong>Invasione Perineurale (Neurotropismo):</strong> Spiccata tendenza ad infiltrare e risalire lungo le guaine dello spazio perineurale dei nervi periferici (motivo dell'intensa sintomatologia dolorosa).</li>
                             </ul>
                         </div>
@@ -1431,7 +1387,7 @@
                 options: [
                     { text: "TIR 3B", isCorrect: true, rationale: "Corretto! La categoria TIR 3B indica un rischio di malignità intorno al 30% e rappresenta una indicazione formale alla lobectomia chirurgica." },
                     { text: "TIR 2", isCorrect: false, rationale: "TIR 2 indica un referto benigno (gozzo colloidale, tiroidite) compatibile con follow-up clinico." },
-                    { text: "TIR 3A", isCorrect: false, rationale: "TIR 3A corrisponde a un'atipia a basso rischio, per cui si raccomanda il monitoraggio clinico ed ecografico ripetuto." },
+                    { text: "TIR 3A", isCorrect: false, rationale: "TIR 3A corrisponde a un'atipia a basso risco, per cui si raccomanda il monitoraggio clinico ed ecografico ripetuto." },
                     { text: "TIR 1", isCorrect: false, rationale: "TIR 1 indica un campione inadeguato o non diagnostico, richiedendo solitamente la ripetizione del prelievo." }
                 ]
             },
@@ -1874,12 +1830,25 @@
                     <button onclick="selectCategory('${cat}')" id="btn-cat-${cat.replace(/\s+/g, '-')}" class="w-full text-left px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-between transition hover:bg-slate-100 dark:hover:bg-slate-800">
                         <span class="flex items-center gap-2">
                             <span class="w-2.5 h-2.5 rounded-full ${getCategoryColorClass(cat)}"></span>
-                            ${cat}
+                            \${cat}
                         </span>
-                        <span class="bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full font-bold">${count}</span>
+                        <span class="bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full font-bold">\${count}</span>
                     </button>
                 `;
             }).join('');
+        }
+
+        function getCategoryColorClass(category) {
+            switch(category) {
+                case "Cute & Melanoma": return "bg-rose-500";
+                case "Tiroide": return "bg-indigo-500";
+                case "Apparato Digerente": return "bg-emerald-500";
+                case "Danno Cellulare & Patologia Gen.": return "bg-amber-500";
+                case "Ghiandole Salivari": return "bg-purple-500";
+                case "Surrene & NET": return "bg-cyan-500";
+                case "Cavo Orale & Orofaringe": return "bg-orange-500";
+                default: return "bg-slate-400";
+            }
         }
 
         function selectCategory(category) {
@@ -1926,10 +1895,9 @@
         }
 
         function filterCards(category) {
-            // Aggiorna classi bottoni categorie
             const categories = ["Tutti", ...new Set(flashcardsData.map(c => c.category))];
             categories.forEach(cat => {
-                const btn = document.getElementById(`btn-cat-${cat.replace(/\s+/g, '-')}`);
+                const btn = document.getElementById(`btn-cat-\${cat.replace(/\\s+/g, '-')}`);
                 if (btn) {
                     if (cat === category) {
                         btn.classList.add('bg-rose-50', 'dark:bg-rose-950/40', 'text-rose-600', 'dark:text-rose-400', 'border-l-4', 'border-rose-500');
@@ -2068,13 +2036,26 @@
                 if (svgContainer) svgContainer.innerHTML = "";
             }
 
-            // Aggiorna il Co-pilota AI dello Stredgone con il titolo corrente
             const aiCurrentTopic = document.getElementById('ai-current-topic');
             if (aiCurrentTopic) {
                 aiCurrentTopic.innerText = card.front;
             }
 
             lucide.createIcons();
+        }
+
+        function prevCard() {
+            if (filteredCards.length === 0) return;
+            currentIndex = (currentIndex - 1 + filteredCards.length) % filteredCards.length;
+            resetCardToFront();
+            updateCardDisplay();
+        }
+
+        function nextCard() {
+            if (filteredCards.length === 0) return;
+            currentIndex = (currentIndex + 1) % filteredCards.length;
+            resetCardToFront();
+            updateCardDisplay();
         }
 
         function markCard(known) {
@@ -2107,25 +2088,46 @@
             if (statKnown) statKnown.innerText = knownCards.length;
             if (statReview) statReview.innerText = reviewCards.length;
 
-            const progressPercent = Math.round((knownCards.length / flashcardsData.length) * 100);
-            if (progressBar) progressBar.style.width = `${progressPercent}%`;
-            if (progressText) progressText.innerText = `${progressPercent}%`;
+            const progressPercent = flashcardsData.length > 0 ? Math.round((knownCards.length / flashcardsData.length) * 100) : 0;
+            if (progressBar) progressBar.style.width = `\${progressPercent}%`;
+            if (progressText) progressText.innerText = `\${progressPercent}%`;
         }
 
+        function resetStats() {
+            if (confirm("Sei sicuro di voler resettare i progressi delle flashcard?")) {
+                knownCards = [];
+                reviewCards = [];
+                localStorage.removeItem('ap1_known_cards');
+                localStorage.removeItem('ap1_review_cards');
+                updateStats();
+                currentIndex = 0;
+                resetCardToFront();
+                updateCardDisplay();
+            }
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.setAttribute('data-lucide', 'sun');
+            } else {
+                icon.setAttribute('data-lucide', 'moon');
+            }
+            lucide.createIcons();
+        }
 
         // ==========================================
         // SEZIONE 2: GESTIONE QUIZ A RISPOSTA MULTIPLA
         // ==========================================
 
         function initQuizForCategory(category) {
-            // Filtra domande del quiz
             if (category === "Tutti") {
                 filteredQuizQuestions = [...quizQuestionsData];
             } else {
                 filteredQuizQuestions = quizQuestionsData.filter(q => q.category === category);
             }
 
-            // Mischia le domande d'ufficio ad ogni avvio di mazzo
             for (let i = filteredQuizQuestions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [filteredQuizQuestions[i], filteredQuizQuestions[j]] = [filteredQuizQuestions[j], filteredQuizQuestions[i]];
@@ -2156,11 +2158,11 @@
             if (quizCorrectCount) quizCorrectCount.innerText = quizScore;
             
             const rate = quizAttemptedCount > 0 ? Math.round((quizScore / quizAttemptedCount) * 100) : 0;
-            if (quizSuccessRate) quizSuccessRate.innerText = `${rate}%`;
+            if (quizSuccessRate) quizSuccessRate.innerText = `\${rate}%`;
             
             const totalToFill = filteredQuizQuestions.length > 0 ? filteredQuizQuestions.length : 1;
             const progressFill = Math.round((quizIndex / totalToFill) * 100);
-            if (quizProgressFill) quizProgressFill.style.width = `${progressFill}%`;
+            if (quizProgressFill) quizProgressFill.style.width = `\${progressFill}%`;
         }
 
         function updateQuizDisplay() {
@@ -2173,7 +2175,7 @@
                 if (quizQuestionText) quizQuestionText.innerText = "Nessuna domanda disponibile per questa categoria.";
                 if (quizOptionsContainer) quizOptionsContainer.innerHTML = "";
                 if (quizVisualCol) quizVisualCol.classList.add('hidden');
-                if (quizMainCol) quizMainCol.className = "md:col-span-12 space-y-4";
+                if (quizMainCol) mainCol.className = "md:col-span-12 space-y-4";
                 return;
             }
 
@@ -2192,7 +2194,6 @@
             if (quizTotalCount) quizTotalCount.innerText = filteredQuizQuestions.length;
             if (quizQuestionText) quizQuestionText.innerText = currentQ.question;
 
-            // Gestione Visualizzazione Vetrini Stredgone nel Quiz
             const visualCol = document.getElementById('quiz-visual-col');
             const mainCol = document.getElementById('quiz-main-col');
             const svgContainer = document.getElementById('quiz-svg-container');
@@ -2207,16 +2208,13 @@
                 if (svgContainer) svgContainer.innerHTML = "";
             }
 
-            // Nascondi il Box feedback e il bottone continua
             const feedbackBox = document.getElementById('quiz-feedback-box');
             const nextBtn = document.getElementById('quiz-next-btn');
 
             if (feedbackBox) feedbackBox.classList.add('hidden');
             if (nextBtn) nextBtn.classList.add('hidden');
 
-            // Popola Opzioni di risposta (mischiate!)
             const options = [...currentQ.options];
-            // Mischia opzioni
             for (let i = options.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [options[i], options[j]] = [options[j], options[i]];
@@ -2226,8 +2224,8 @@
             if (optionsContainer) {
                 optionsContainer.innerHTML = options.map((opt, idx) => {
                     return `
-                        <button onclick="checkQuizAnswer(this, ${opt.isCorrect}, '${opt.rationale.replace(/'/g, "\\'")}')" class="quiz-option-btn w-full text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium text-sm flex items-center justify-between gap-3">
-                            <span>${opt.text}</span>
+                        <button onclick="checkQuizAnswer(this, \${opt.isCorrect}, '\${opt.rationale.replace(/'/g, "\\\\'")}')" class="quiz-option-btn w-full text-left p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium text-sm flex items-center justify-between gap-3">
+                            <span>\${opt.text}</span>
                             <div class="option-icon-slot flex items-center justify-center w-5 h-5 rounded-full border border-slate-300 dark:border-slate-700"></div>
                         </button>
                     `;
@@ -2238,20 +2236,18 @@
         }
 
         function checkQuizAnswer(selectedBtn, isCorrect, rationale) {
-            if (isAnswered) return; // Impedisce modifiche post-risposta
+            if (isAnswered) return;
             isAnswered = true;
 
             quizAttemptedCount++;
             if (isCorrect) quizScore++;
 
-            // Disattiva e colora tutti i bottoni
             const buttons = document.querySelectorAll('.quiz-option-btn');
             buttons.forEach(btn => {
                 btn.classList.add('cursor-default');
                 btn.classList.remove('hover:bg-slate-100', 'dark:hover:bg-slate-800');
             });
 
-            // Applica stili visivi corretti/errati sul bottone cliccato
             const iconSlot = selectedBtn.querySelector('.option-icon-slot');
             const feedbackBox = document.getElementById('quiz-feedback-box');
             const feedbackIcon = document.getElementById('quiz-feedback-icon');
@@ -2264,8 +2260,6 @@
                     iconSlot.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-white"></i>`;
                     iconSlot.className = "option-icon-slot flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 border-none";
                 }
-                
-                // Configura Box Feedback
                 if (feedbackBox) feedbackBox.className = "p-4 rounded-xl border border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/10 text-emerald-800 dark:text-emerald-300";
                 if (feedbackIcon) {
                     feedbackIcon.className = "p-1 rounded-full bg-emerald-500 text-white mt-0.5";
@@ -2280,12 +2274,11 @@
                 }
 
                 buttons.forEach(btn => {
-                    if (btn !== selectedBtn && (btn.outerHTML.includes('true,') || btn.getAttribute('onclick').includes('true,'))) {
+                    if (btn !== selectedBtn && btn.getAttribute('onclick').includes('true,')) {
                         btn.classList.add('bg-emerald-50/50', 'dark:bg-emerald-950/10', 'border-emerald-300', 'text-emerald-600');
                     }
                 });
 
-                // Configura Box Feedback
                 if (feedbackBox) feedbackBox.className = "p-4 rounded-xl border border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/10 text-rose-800 dark:text-rose-300";
                 if (feedbackIcon) {
                     feedbackIcon.className = "p-1 rounded-full bg-rose-500 text-white mt-0.5";
@@ -2297,7 +2290,6 @@
             if (feedbackText) feedbackText.innerText = rationale;
             if (feedbackBox) feedbackBox.classList.remove('hidden');
             
-            // Svela pulsante continua
             const nextBtn = document.getElementById('quiz-next-btn');
             if (nextBtn) nextBtn.classList.remove('hidden');
 
@@ -2308,7 +2300,6 @@
         function nextQuizQuestion() {
             quizIndex++;
             if (quizIndex >= filteredQuizQuestions.length) {
-                // Fine del quiz: mostra schermata di riepilogo
                 const viewQuiz = document.getElementById('view-quiz');
                 const viewQuizSummary = document.getElementById('view-quiz-summary');
                 const summaryScore = document.getElementById('summary-score');
@@ -2317,9 +2308,9 @@
                 if (viewQuiz) viewQuiz.classList.add('hidden');
                 if (viewQuizSummary) viewQuizSummary.classList.remove('hidden');
                 
-                if (summaryScore) summaryScore.innerText = `${quizScore} / ${filteredQuizQuestions.length}`;
-                const percent = Math.round((quizScore / filteredQuizQuestions.length) * 100);
-                if (summaryPercentage) summaryPercentage.innerText = `${percent}% Precisione`;
+                if (summaryScore) summaryScore.innerText = `\${quizScore} / \${filteredQuizQuestions.length}`;
+                const percent = filteredQuizQuestions.length > 0 ? Math.round((quizScore / filteredQuizQuestions.length) * 100) : 0;
+                if (summaryPercentage) summaryPercentage.innerText = `\${percent}% Precisione`;
                 
                 const feedbackText = document.getElementById('summary-feedback');
                 if (feedbackText) {
@@ -2344,7 +2335,6 @@
             initQuizForCategory(currentCategory);
         }
 
-
         // ==========================================
         // SEZIONE 3: GESTIONE SIMULATORE ORALE
         // ==========================================
@@ -2356,7 +2346,6 @@
                 filteredOralQuestions = oralQuestionsData.filter(q => q.category === category);
             }
 
-            // Mischia domande orali per non ripeterle nello stesso ordine
             for (let i = filteredOralQuestions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [filteredOralQuestions[i], filteredOralQuestions[j]] = [filteredOralQuestions[j], filteredOralQuestions[i]];
@@ -2400,7 +2389,7 @@
             const currentIndexEl = document.getElementById('oral-current-index');
             const totalCountEl = document.getElementById('oral-total-count');
 
-            if (questionText) questionText.innerText = `"${currentQ.question}"`;
+            if (questionText) questionText.innerText = `"\${currentQ.question}"`;
             if (commName) commName.innerText = currentQ.commissioner;
             if (currentIndexEl) currentIndexEl.innerText = oralIndex + 1;
             if (totalCountEl) totalCountEl.innerText = filteredOralQuestions.length;
@@ -2411,7 +2400,7 @@
             const svgContainer = document.getElementById('oral-svg-container');
 
             if (honorList) {
-                honorList.innerHTML = currentQ.honorPoints.map(pt => `<li>${pt}</li>`).join('');
+                honorList.innerHTML = currentQ.honorPoints.map(pt => `<li>\${pt}</li>`).join('');
             }
             if (macroText) macroText.innerText = currentQ.macroText;
             if (microText) microText.innerText = currentQ.microText;
@@ -2445,7 +2434,7 @@
             const ratedKeys = Object.keys(oralRatings);
             const totalRated = ratedKeys.length;
             
-            if (passedCountEl) passedCountEl.innerText = `${totalRated} / ${oralQuestionsData.length}`;
+            if (passedCountEl) passedCountEl.innerText = `\${totalRated} / \${oralQuestionsData.length}`;
 
             if (confidenceEl) {
                 if (totalRated === 0) {
@@ -2489,14 +2478,13 @@
             initOralForCategory(currentCategory);
         }
 
-
         // ==========================================
         // SEZIONE 4: INTEGRAZIONE GEMINI API LLM
         // ==========================================
 
         async function callGeminiAPI(prompt, systemInstruction = "") {
             const apiKey = ""; // Runtime-injected token
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=\${apiKey}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }]
             };
@@ -2524,7 +2512,7 @@
                 await new Promise(resolve => setTimeout(resolve, delay));
                 delay *= 2;
             }
-            throw new Error("Impossibile connettersi al Co-pilota AI dello Stredgone dopo diversi tentativi di backoff esponenziale. Controlla la tua connessione.");
+            throw new Error("Impossibile connettersi al Co-pilota AI dello Stredgone dopo diversi tentativi. Controlla la tua connessione.");
         }
 
         async function askAI(type) {
@@ -2552,13 +2540,13 @@
 
             if (type === 'caso') {
                 responseType.innerText = "Caso Clinico d'Esame ✨";
-                prompt = `Genera un caso clinico d'esame per uno studente di medicina basato esclusivamente sulla patologia: "${card.front}". Includi: 1) Breve anamnesi con sintomi clinici plausibili, 2) Reperti macroscopici e microscopici (evidenziando i dettagli tipici d'esame), 3) Poni 2 domande diagnostiche aperte con relative risposte per testare lo studente.`;
+                prompt = `Genera un caso clinico d'esame per uno studente di medicina basato esclusivamente sulla patologia: "\${card.front}". Includi: 1) Breve anamnesi con sintomi clinici plausibili, 2) Reperti macroscopici e microscopici (evidenziando i dettagli tipici d'esame), 3) Poni 2 domande diagnostiche aperte con relative risposte per testare lo studente.`;
             } else if (type === 'mnemonico') {
                 responseType.innerText = "Associazione Mnemonica ✨";
-                prompt = `Crea un'associazione mnemonica insolita, un acronimo o una filastrocca facile in italiano per ricordare istantaneamente i criteri diagnostici microscopici e macroscopici chiave della patologia: "${card.front}".`;
+                prompt = `Crea un'associazione mnemonica insolita, un acronimo o una filastrocca facile in italiano per ricordare istantaneamente i criteri diagnostici microscopici e macroscopici chiave della patologia: "\${card.front}".`;
             } else if (type === 'semplifica') {
                 responseType.innerText = "Spiegazione Semplificata ✨";
-                prompt = `Semplifica al massimo, ma mantenendo il rigore scientifico, la patologia "${card.front}". Spiega il perché cellulare o fisiopatologico di ciò che osserviamo nel vetrino microscopico dell'Atlante.`;
+                prompt = `Semplifica al massimo, ma mantenendo il rigore scientifico, la patologia "\${card.front}". Spiega il perché cellulare o fisiopatologico di ciò che osserviamo nel vetrino microscopico dell'Atlante.`;
             } else if (type === 'free') {
                 const questionInput = document.getElementById('ai-free-question');
                 const userQuestion = questionInput.value.trim();
@@ -2567,7 +2555,7 @@
                     return;
                 }
                 responseType.innerText = "Chiarimento Clinico ✨";
-                prompt = `In merito alla patologia "${card.front}" o ad argomenti correlati di AP1, rispondi con estremo dettaglio scientifico a questa domanda dello studente della Federico II: "${userQuestion}"`;
+                prompt = `In merito alla patologia "\${card.front}" o ad argomenti correlati di AP1, rispondi con estremo dettaglio scientifico a questa domanda dello studente della Federico II: "\${userQuestion}"`;
                 questionInput.value = "";
             }
 
@@ -2575,7 +2563,7 @@
                 const answer = await callGeminiAPI(prompt, systemInst);
                 responseContent.innerText = answer;
             } catch (error) {
-                responseContent.innerHTML = `<span class="text-rose-500 font-semibold flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-4 h-4"></i> ${error.message}</span>`;
+                responseContent.innerHTML = `<span class="text-rose-500 font-semibold flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-4 h-4"></i> \${error.message}</span>`;
             }
             lucide.createIcons();
         }
@@ -2585,7 +2573,6 @@
             if (responseBox) responseBox.classList.add('hidden');
         }
 
-
         // ==========================================
         // LIBRERIA DELLO "STREDGONE" - DISEGNI DIAGNOSTICI REALI
         // ==========================================
@@ -2593,93 +2580,66 @@
         function getHistologySVG(type) {
             switch(type) {
                 case "abcde":
-                    // SCHEMA "DIFFUSIONE PAGETOIDE NEL MELANOMA" - STREDGONE
                     return `
                         <svg viewBox="0 0 200 180" class="w-full h-full max-h-[260px]">
-                            <!-- Sfondo vetrino (Ematossilina-Eosina) -->
                             <rect x="5" y="5" width="190" height="170" rx="10" fill="#FDF2F8" stroke="#F472B6" stroke-width="2"/>
-                            
-                            <!-- Strato Corneo (Eosinofilo sfaldato superiore) -->
                             <path d="M 5 25 Q 30 15 55 25 T 105 25 T 155 25 T 195 25 L 195 10 L 5 10 Z" fill="#F472B6" opacity="0.6"/>
-                            
-                            <!-- Cheratinociti dell'Epidermide sani -->
                             <g fill="#FFF1F2" stroke="#FDA4AF" stroke-width="1">
                                 <circle cx="20" cy="45" r="6"/><circle cx="35" cy="45" r="6"/><circle cx="50" cy="45" r="6"/>
                                 <circle cx="150" cy="45" r="6"/><circle cx="165" cy="45" r="6"/><circle cx="180" cy="45" r="6"/>
                                 <circle cx="15" cy="60" r="6"/><circle cx="30" cy="60" r="6"/><circle cx="165" cy="60" r="6"/><circle cx="180" cy="60" r="6"/>
                                 <circle cx="25" cy="75" r="6"/><circle cx="170" cy="75" r="6"/>
                             </g>
-                            
-                            <!-- Giunzione Dermo-Epidermica -->
                             <path d="M 5 95 Q 40 85 65 100 T 115 100 T 155 95 T 195 100" fill="none" stroke="#E11D48" stroke-width="2"/>
-                            
-                            <!-- Invasione Pagetoide -->
                             <g transform="translate(0, 5)">
                                 <circle cx="70" cy="85" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="70" cy="85" r="4.5" fill="#292524"/>
-                                
                                 <circle cx="85" cy="88" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="85" cy="88" r="5" fill="#292524"/>
-
                                 <circle cx="105" cy="83" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="105" cy="83" r="4" fill="#292524"/>
-
                                 <circle cx="125" cy="88" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="125" cy="88" r="4.5" fill="#292524"/>
-
                                 <circle cx="55" cy="60" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="55" cy="60" r="5" fill="#292524"/>
-                                
                                 <circle cx="95" cy="50" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="95" cy="50" r="4.5" fill="#292524"/>
-
                                 <circle cx="115" cy="40" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="115" cy="40" r="4" fill="#292524"/>
-
                                 <circle cx="135" cy="60" r="8" fill="#F5F5F4" stroke="#78716C" stroke-width="1.5"/>
                                 <circle cx="135" cy="60" r="5" fill="#292524"/>
                             </g>
-
                             <path d="M 122 38 L 135 25" fill="none" stroke="#E11D48" stroke-width="1" marker-end="url(#arrow-red)"/>
                             <text x="140" y="21" font-size="7" font-family="sans-serif" font-weight="bold" fill="#E11D48">Pagetoide</text>
-                            
                             <defs>
                                 <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                                     <path d="M 0 0 L 10 5 L 0 10 z" fill="#E11D48"/>
                                 </marker>
                             </defs>
-                            
                             <text x="100" y="160" text-anchor="middle" font-size="9" font-family="sans-serif" font-weight="extrabold" fill="#4C0519">CRESCITA RADIALE CON DIFFUSIONE PAGETOIDE</text>
                         </svg>
                     `;
                 case "breslow-clark":
-                    // SCHEMA METRICO BRESLOW & LIVELLI STRUTTURALI CLARK
                     return `
                         <svg viewBox="0 0 200 180" class="w-full h-full max-h-[260px]">
                             <rect x="5" y="15" width="190" height="30" fill="#FFF1F2" stroke="#FDA4AF" stroke-width="1.5"/>
                             <line x1="5" y1="15" x2="195" y2="15" stroke="#E11D48" stroke-width="2"/>
-                            
                             <rect x="5" y="45" width="190" height="40" fill="#FAF5FF" stroke="#E9D5FF" stroke-width="1.5"/>
                             <rect x="5" y="85" width="190" height="55" fill="#F0FDFA" stroke="#CCFBF1" stroke-width="1.5"/>
                             <rect x="5" y="140" width="190" height="35" fill="#FEF9C3" stroke="#FEF08A" stroke-width="1.5"/>
-
                             <path d="M 80 15 L 120 15 L 135 45 L 130 85 L 115 140 L 95 140 L 85 85 L 75 45 Z" fill="#292524" opacity="0.95" stroke="#000" stroke-width="1"/>
-                            
                             <line x1="155" y1="15" x2="155" y2="140" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
                             <path d="M 150 15 L 160 15" stroke="#059669" stroke-width="2"/>
                             <path d="M 150 140 L 160 140" stroke="#059669" stroke-width="2"/>
                             <text x="178" y="75" text-anchor="middle" font-size="8" font-family="sans-serif" font-weight="bold" fill="#059669">Breslow</text>
                             <text x="178" y="85" text-anchor="middle" font-size="7" font-family="sans-serif" fill="#059669">(in mm)</text>
-                            
                             <text x="25" y="32" font-size="8" font-family="sans-serif" font-weight="bold" fill="#B91C1C">I</text>
                             <text x="25" y="60" font-size="8" font-family="sans-serif" font-weight="bold" fill="#B91C1C">II / III</text>
                             <text x="25" y="112" font-size="8" font-family="sans-serif" font-weight="bold" fill="#B91C1C">IV</text>
                             <text x="25" y="158" font-size="8" font-family="sans-serif" font-weight="bold" fill="#B91C1C">V</text>
-
                             <line x1="5" y1="45" x2="50" y2="45" stroke="#B91C1C" stroke-dasharray="2,2"/>
                             <line x1="5" y1="85" x2="50" y2="85" stroke="#B91C1C" stroke-dasharray="2,2"/>
                             <line x1="5" y1="140" x2="50" y2="140" stroke="#B91C1C" stroke-dasharray="2,2"/>
-
                             <defs>
                                 <marker id="arrow-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                                     <path d="M 0 0 L 10 5 L 0 10 z" fill="#059669"/>
@@ -2693,19 +2653,15 @@
                             <rect x="5" y="5" width="190" height="170" rx="10" fill="#EEF2F6" stroke="#94A3B8" stroke-width="1.5"/>
                             <path d="M 20 40 C 40 10 160 10 180 40 C 200 70 180 140 100 165 C 20 140 0 70 20 40 Z" fill="none" stroke="#F472B6" stroke-width="4"/>
                             <path d="M 23 43 C 41 14 159 14 177 43 C 195 70 176 135 100 160 C 24 135 5 70 23 43 Z" fill="none" stroke="#DBEAFE" stroke-width="5"/>
-                            
                             <circle cx="50" cy="65" r="14" fill="#BFDBFE" stroke="#3B82F6" stroke-width="1"/>
                             <circle cx="150" cy="65" r="14" fill="#BFDBFE" stroke="#3B82F6" stroke-width="1"/>
                             <circle cx="100" cy="40" r="12" fill="#BFDBFE" stroke="#3B82F6" stroke-width="1"/>
-                            
                             <g fill="#451A03" stroke="#1C1917" stroke-width="0.5">
                                 <circle cx="48" cy="27" r="3.5"/><circle cx="55" cy="25" r="4"/><circle cx="63" cy="28" r="3"/>
                                 <circle cx="148" cy="27" r="3.5"/>
                             </g>
-                            
                             <path d="M 85 24 L 57 27" fill="none" stroke="#EF4444" stroke-width="1.2" marker-end="url(#arrow-red)"/>
                             <text x="90" y="25" font-size="7.5" font-family="sans-serif" font-weight="extrabold" fill="#EF4444">Nido Metastatico</text>
-                            
                             <text x="100" y="105" text-anchor="middle" font-size="8" font-family="sans-serif" font-weight="bold" fill="#1E293B">SENO SOTTOCAPSULARE</text>
                         </svg>
                     `;
@@ -2713,7 +2669,6 @@
                     return `
                         <svg viewBox="0 0 200 180" class="w-full h-full max-h-[260px]">
                             <rect x="5" y="5" width="190" height="170" rx="10" fill="#FAF5FF" stroke="#C084FC" stroke-width="1.5"/>
-                            
                             <g transform="translate(100,0)">
                                 <circle cx="45" cy="45" r="15" fill="#1C1917"/>
                                 <line x1="45" y1="45" x2="45" y2="20" stroke="#1C1917" stroke-width="2"/>
@@ -2724,7 +2679,6 @@
                                 <line x1="45" y1="45" x2="63" y2="63" stroke="#1C1917" stroke-width="2"/>
                                 <text x="45" y="80" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="extrabold" fill="#1C1917">Starburst (Reed)</text>
                             </g>
-                            
                             <g transform="translate(0, 5)">
                                 <path d="M 5 110 Q 30 90 50 115 T 90 115" fill="none" stroke="#F472B6" stroke-width="1.5"/>
                                 <path d="M 45 115 C 38 135 58 145 53 117 Z" fill="#F43F5E" stroke="#9F1239" stroke-dasharray="2,1"/>
@@ -2807,7 +2761,7 @@
                             <circle cx="100" cy="75" r="48" fill="#FFFFFF" stroke="#F43F5E" stroke-width="3.5"/>
                             <circle cx="94" cy="70" r="34" fill="#F0FDFA" stroke="#99F6E4" stroke-width="1" stroke-dasharray="3,2"/>
                             <path d="M 124 102 C 114 84 146 84 140 114 C 130 120 120 112 124 102 Z" fill="#4C0519" stroke="#1C0107" stroke-width="2"/>
-                            <text x="100" y="152" text-anchor="middle" font-size="8.5" font-family="sans-serif" font-weight="extrabold" fill="#9F1239">K GISTRICO DIFFUSO: PERDITA DI E-CADERINA</text>
+                            <text x="100" y="152" text-anchor="middle" font-size="8.5" font-family="sans-serif" font-weight="extrabold" fill="#9F1239">K GASTRICO DIFFUSO: PERDITA DI E-CADERINA</text>
                         </svg>
                     `;
                 case "crohn-rcu":
@@ -2857,35 +2811,24 @@
                         </svg>
                     `;
                 case "esofago-spinocellulare":
-                    // SCHEMA "CARCINOMA SPINOCELLULARE ESOFAGO" - STREDGONE
                     return `
                         <svg viewBox="0 0 200 180" class="w-full h-full max-h-[260px]">
-                            <!-- Sfondo vetrino (Ematossilina-Eosina) -->
                             <rect x="5" y="5" width="190" height="170" rx="10" fill="#FEE2E2" stroke="#F43F5E" stroke-width="2"/>
-                            
-                            <!-- Nido infiltrante di cellule squamose atipiche (Spinose) -->
                             <path d="M 25 45 C 30 20 120 15 150 45 C 180 75 140 120 110 130 C 80 140 30 110 25 45 Z" fill="#FFF1F2" stroke="#EF4444" stroke-width="1.5"/>
-                            
-                            <!-- Perle Cornee di Cheratina centrali concentriche (Rosa intenso-rosso) -->
                             <g transform="translate(85, 75)">
                                 <circle cx="0" cy="0" r="22" fill="#FFE4E6" stroke="#EF4444" stroke-width="1"/>
                                 <circle cx="0" cy="0" r="16" fill="none" stroke="#EF4444" stroke-dasharray="3,1" stroke-width="1.5"/>
                                 <circle cx="0" cy="0" r="11" fill="none" stroke="#DC2626" stroke-width="2"/>
                                 <circle cx="0" cy="0" r="6" fill="#991B1B"/>
                             </g>
-                            
-                            <!-- Atipie Nucleari e ponti intercellulari (Dettagli) -->
                             <g fill="#7F1D1D" stroke="none">
                                 <circle cx="45" cy="55" r="3.5"/>
                                 <circle cx="135" cy="50" r="4"/>
                                 <circle cx="120" cy="110" r="3.5"/>
                                 <circle cx="55" cy="100" r="4"/>
                             </g>
-                            
-                            <!-- Ponti intercellulari (trattini tra le cellule a ridosso della perla) -->
                             <line x1="55" y1="55" x2="65" y2="55" stroke="#F43F5E" stroke-width="1" stroke-dasharray="2,1"/>
                             <line x1="120" y1="75" x2="130" y2="75" stroke="#F43F5E" stroke-width="1" stroke-dasharray="2,1"/>
-
                             <text x="100" y="160" text-anchor="middle" font-size="8" font-family="sans-serif" font-weight="extrabold" fill="#991B1B">K SQUAMOSO ESOFAGO: PERLA CORNEA</text>
                         </svg>
                     `;
@@ -2931,7 +2874,7 @@
                                 <circle cx="45" cy="45" r="14"/>
                             </g>
                             <path d="M 20 100 Q 50 85 90 110 T 150 100 Q 160 145 100 135 T 20 130 Z" fill="#E9D5FF" opacity="0.8" stroke="#C084FC" stroke-width="1"/>
-                            <text x="100" y="145" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="extrabold" fill="#5B21B6">Stroma Condro-Mixoide</text>
+                            <text x="100" y="145" text-anchor="middle" font-size="7.5" font-family="sans-serif" font-weight="bold" fill="#5B21B6">Stroma Condro-Mixoide</text>
                             <text x="100" y="165" text-anchor="middle" font-size="8.5" font-family="sans-serif" font-weight="extrabold" fill="#6B21A8">ADENOMA PLEOMORFO: LESIONE BIFASICA</text>
                         </svg>
                     `;
@@ -3004,10 +2947,17 @@
                         </svg>
                     `;
                 case "hpv-orale":
-                    // SCHEMA "PAPILLOMA SQUAMOSO ED EFFETTO CITOPATICO DA HPV (COILOCITI)" - STREDGONE
                     return `
                         <svg viewBox="0 0 200 180" class="w-full h-full max-h-[260px]">
                             <rect x="5" y="5" width="190" height="170" rx="10" fill="#FFF1F2" stroke="#FDA4AF" stroke-width="1.5"/>
-                            
-                            <!-- Asse connettivo-vascolare stromale (al centro che ramifica in alto) -->
-                            <path d="M 90 175 C 90 120 70 90 85 45 C 90 20 110 20 115 45 C 130 90 110 120 110
+                            <path d="M 90 175 C 90 120 70 90 85 45 C 90 20 110 20 115 45 C 130 90 110 120 110 175 Z" fill="none" stroke="#EF4444" stroke-width="2"/>
+                            <text x="100" y="162" text-anchor="middle" font-size="8.5" font-family="sans-serif" font-weight="extrabold" fill="#9F1239">PAPILLOMA SQUAMOSO (HPV)</text>
+                        </svg>
+                    `;
+                default:
+                    return "";
+            }
+        }
+    </script>
+</body>
+</html>
